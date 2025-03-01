@@ -57,5 +57,8 @@ precmd() {
 PROMPT='%F{green}%n@%m%f %F{blue}%(3~|.../%2~|%~)%f $git_info
 $(virtualenv_prompt)%# '
 
+# RPROMPT to show time aligned to first row
+RPROMPT='%F{yellow}$(date +"%H:%M")%f'
+
 # Initial Git info update
 async_git_info
