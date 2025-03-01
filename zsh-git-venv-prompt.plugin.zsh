@@ -54,8 +54,7 @@ precmd() {
 }
 
 # Configure two-line prompt
-PROMPT='
-%F{green}%n@%m%f %F{blue}%~%f $git_info
+PROMPT='%F{green}%n@%m%f %F{blue}%(3~|.../%2~|%~)%f $git_info
 $(virtualenv_prompt)%# '
 
 # Initial Git info update
