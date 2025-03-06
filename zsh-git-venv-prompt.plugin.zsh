@@ -59,6 +59,7 @@ function precmd {
 
 # The plugin will auto execute this zvm_after_select_vi_mode function
 function zvm_after_select_vi_mode {
+    MODE_SYMBOL=">"
     case $ZVM_MODE in
         $ZVM_MODE_NORMAL)
             MODE_SYMBOL="<"
@@ -85,14 +86,8 @@ $(virtualenv_prompt)${MODE_SYMBOL} '
     RPROMPT='%F{yellow}$(date +"%H:%M")%f'
 }
 
-MODE_SYMBOL=">"
-
-# Configure two-line prompt
-PROMPT='%F{green}%n@%m%f %F{blue}%(3~|.../%2~|%~)%f $git_info
-$(virtualenv_prompt)${MODE_SYMBOL} '
-
-# RPROMPT to show time aligned to first row
-RPROMPT='%F{yellow}$(date +"%H:%M")%f'
+# Remove redundant configuration and initialize prompt
+zvm_after_select_vi_mode
 
 # Initial Git info update
 async_git_info
