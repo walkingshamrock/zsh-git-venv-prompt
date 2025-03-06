@@ -8,6 +8,8 @@ fi
 
 setopt PROMPT_SUBST  # Enable command substitution
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1 # Disable default virtualenv prompt
+
 # Function to display virtual environment at the beginning of the second line
 function virtualenv_prompt {
     if [[ -n "$VIRTUAL_ENV" ]]; then
