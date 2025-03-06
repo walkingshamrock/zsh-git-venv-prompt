@@ -76,6 +76,10 @@ user@hostname /path/to/dir (main) + * ✔
 
 Contributions are welcome! If you find a bug or have an improvement, please open an issue or submit a pull request.
 
+## Acknowledgements
+
+Special thanks to [pure](https://github.com/sindresorhus/pure) for their inspiration and influence in designing the shell prompts.
+
 ## License
 
 This plugin is licensed under the MIT License. See the LICENSE file for details.
