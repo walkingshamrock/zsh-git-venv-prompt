@@ -1,5 +1,7 @@
 # zsh-git-venv-prompt
 
+![Screenshot](screenshot.png)
+
 `zsh-git-venv-prompt` is a Zsh plugin that enhances your Zsh prompt with information about the current Python virtual environment and the Git status (asynchronously). It uses `zsh-async` to provide async updates for Git status and displays the virtual environment in the second line of the prompt.
 
 ## Features
