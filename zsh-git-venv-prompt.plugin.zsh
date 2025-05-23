@@ -26,7 +26,7 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '*'
 zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' cleanstr '✔'
-zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f %F{red}%u%c%f %F{yellow}%m%f'
+zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f %F{red}%u%c%f'
 
 git_info=""
 
@@ -39,13 +39,16 @@ function _update_git_info {
 # Start async worker for Git
 function async_git_info {
     async_flush_jobs git_worker  # Stop any previous job
-    async_job git_worker vcs_info  # Start a new job
+    async_job git_worker _update_git_info  # Start a new job
 }
 
 # Initialize the async job
-async_init
-async_start_worker git_worker
-async_register_callback git_worker _update_git_info
+if async_init; then
+    async_start_worker git_worker
+    async_register_callback git_worker _update_git_info
+else
+    echo "Warning: Failed to initialize async worker for git status"
+fi
 
 # Ensure Git info updates when changing directories or switching branches
 function chpwd {
@@ -83,7 +86,7 @@ function zvm_after_select_vi_mode {
 $(virtualenv_prompt)${MODE_SYMBOL} '
 
     # RPROMPT to show time aligned to first row
-    RPROMPT='%F{yellow}$(date +"%H:%M")%f'
+    # RPROMPT='%F{yellow}$(date +"%H:%M")%f'
 }
 
 # Remove redundant configuration and initialize prompt

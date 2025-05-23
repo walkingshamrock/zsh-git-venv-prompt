@@ -15,11 +15,13 @@
 ## Requirements
 
 - [zsh-async](https://github.com/mafredri/zsh-async): This plugin requires `zsh-async` for asynchronous Git status updates.
+- [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode) (optional): For vi-mode integration and mode indicators.
 
-You can install `zsh-async` using a plugin manager like `znap`:
+You can install the dependencies using a plugin manager like `znap`:
 
 ```sh
 znap source mafredri/zsh-async
+znap source jeffreytse/zsh-vi-mode  # Optional for vi-mode support
 ```
 
 ## Installation
@@ -66,12 +68,16 @@ You can modify the prompt by changing the PROMPT variable in the zsh-git-venv-pr
 Once installed, the plugin will automatically display:
 
 - The name of the currently active Python virtual environment (if any).
-- The current Git branch and status asynchronously: - + for staged changes. - \* for unstaged changes. - ✔ for clean status.
-  For example, your prompt will look like this:
+- The current Git branch and status asynchronously:
+  - `+` for staged changes
+  - `*` for unstaged changes
+  - `✔` for clean status (when no changes)
+
+For example, your prompt will look like this:
 
 ```
-user@hostname /path/to/dir (main) + * ✔
-(venv) %
+user@hostname /path/to/dir (main) + *
+(venv) > 
 ```
 
 ## Contributing
