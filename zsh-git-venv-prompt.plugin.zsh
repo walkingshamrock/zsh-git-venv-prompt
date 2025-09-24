@@ -14,7 +14,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1 # Disable default virtualenv prompt
 
 # Function to display virtual environment at the beginning of the second line
 function virtualenv_prompt {
-    if [[ -n "$VIRTUAL_ENV" ]]; then
+    if [[ -n "$VIRTUAL_ENV" ]] && [[ -d "$VIRTUAL_ENV" ]] && [[ "$PATH" == *"$VIRTUAL_ENV"* ]]; then
         echo "%F{yellow}($(basename $VIRTUAL_ENV))%f "
     else
         echo ""
